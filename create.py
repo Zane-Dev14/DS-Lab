@@ -30,9 +30,9 @@ heap:str=[i for i in questions if "Heap" in i]
 tree:str=[i for i in questions if ("Operations" in i)or("Tree" in i)]
 print(stack)
 print(Linked)
-for i in Linked:
+for i in stack:
     # Specify the file path
-    file_path = f"/home/zane/Desktop/Code/git/DS Lab/BinaryTree/{i}.py"
+    file_path = f"/home/zane/Desktop/Code/git/DS Lab/Stack/{i}.c"
     # Create an empty file using os.mknod()
     try:
         
@@ -40,54 +40,52 @@ for i in Linked:
             code='''#include <stdio.h>
 #include <stdlib.h>
 
-// Define a structure for your data type
-struct Node {
-    int data;
-    struct Node* next;
-};
+#define MAX_SIZE 10 // Adjust the size as needed
 
 // Function prototypes
-void addNode(struct Node** head, int data);
-void removeNode(struct Node** head, int data);
-void displayList(struct Node* head);
+void push(int stack[], int* top, int data);
+int pop(int stack[], int* top);
+void displayStack(int stack[], int top);
 
 int main() {
-    struct Node* head = NULL;
+    int stack[MAX_SIZE];
+    int top = -1;
     int choice, data;
 
     do {
         // Display menu
-        printf("\nMenu:\n");
-        printf("1. Add Node\n");
-        printf("2. Remove Node\n");
-        printf("3. Display List\n");
-        printf("4. Exit\n");
+        printf("\\nStack Menu:\\n");
+        printf("1. Push\\n");
+        printf("2. Pop\\n");
+        printf("3. Display Stack\\n");
+        printf("4. Exit\\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                printf("Enter data to add: ");
+                printf("Enter data to push: ");
                 scanf("%d", &data);
-                addNode(&head, data);
+                push(stack, &top, data);
                 break;
 
             case 2:
-                printf("Enter data to remove: ");
-                scanf("%d", &data);
-                removeNode(&head, data);
+                data = pop(stack, &top);
+                if (data != -1) {
+                    printf("Popped element: %d\\n", data);
+                }
                 break;
 
             case 3:
-                displayList(head);
+                displayStack(stack, top);
                 break;
 
             case 4:
-                printf("Exiting the program.\n");
+                printf("Exiting the program.\\n");
                 break;
 
             default:
-                printf("Invalid choice. Please enter a valid option.\n");
+                printf("Invalid choice. Please enter a valid option.\\n");
         }
 
     } while (choice != 4);
@@ -95,20 +93,22 @@ int main() {
     return 0;
 }
 
-// Function to add a node to the linked list
-void addNode(struct Node** head, int data) {
+// Function to push an element to the stack
+void push(int stack[], int* top, int data) {
     // Your code here
 }
 
-// Function to remove a node from the linked list
-void removeNode(struct Node** head, int data) {
+// Function to pop an element from the stack
+int pop(int stack[], int* top) {
+    // Your code here
+    return -1; // Placeholder, update as needed
+}
+
+// Function to display the stack
+void displayStack(int stack[], int top) {
     // Your code here
 }
 
-// Function to display the linked list
-void displayList(struct Node* head) {
-    // Your code here
-}
 '''
             fa.write(code)
         print(f"File '{file_path}' created successfully.")
