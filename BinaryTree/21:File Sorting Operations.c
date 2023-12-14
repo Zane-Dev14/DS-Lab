@@ -1,41 +1,4 @@
-import os
-all='''Polynomial Sum Program(List)
-Matrix List
-Circular Queue 
-Array Queue 
-Stack Array 
-Priority Queue Array
-Double-Ended Queue Array
-Infix to Postfix(Stack)
-Postfix evaluation(Stack)
-Linked List 
-Stack Linked List
-Queue Linked List
-Reverse Queue Content
-Polynomial Linked List
-Student List 
-Doubly Linked List
-Binary Tree Operations
-Binary Search Tree
-Sort with Binary Tree
-Graph Search Operations
-File Sorting Operations
-Heap Sort
-Hash Table Chaining
-Hash Table Linear Probing'''
-questions :str =[ f"{index+1}:{i}" for index,i in enumerate(all.split("\n"))] 
-stack :str=[i for i in questions if ("Stack" in i)or("Queue" in i)]
-Linked :str=[i for i in questions if "List" in i]
-heap:str=[i for i in questions if "Heap" in i]
-tree:str=[i for i in questions if ("Operations" in i)or("Tree" in i)]
-for i in tree:
-    # Specify the file path
-    file_path = f"/home/zane/Desktop/Code/git/DS Lab/BinaryTree/{i}.c"
-    # Create an empty file using os.mknod()
-    try:
-        
-        with open(file_path,"w") as fa:
-            code='''#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 // Define structure for binary tree node
@@ -58,12 +21,12 @@ int main() {
 
     do {
         // Display menu
-        printf("\\nBinary Tree Menu:\\n");
-        printf("1. Insert\\n");
-        printf("2. Inorder Traversal\\n");
-        printf("3. Preorder Traversal\\n");
-        printf("4. Postorder Traversal\\n");
-        printf("5. Exit\\n");
+        printf("\nBinary Tree Menu:\n");
+        printf("1. Insert\n");
+        printf("2. Inorder Traversal\n");
+        printf("3. Preorder Traversal\n");
+        printf("4. Postorder Traversal\n");
+        printf("5. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -77,27 +40,27 @@ int main() {
             case 2:
                 printf("Inorder Traversal: ");
                 inorderTraversal(root);
-                printf("\\n");
+                printf("\n");
                 break;
 
             case 3:
                 printf("Preorder Traversal: ");
                 preorderTraversal(root);
-                printf("\\n");
+                printf("\n");
                 break;
 
             case 4:
                 printf("Postorder Traversal: ");
                 postorderTraversal(root);
-                printf("\\n");
+                printf("\n");
                 break;
 
             case 5:
-                printf("Exiting the program.\\n");
+                printf("Exiting the program.\n");
                 break;
 
             default:
-                printf("Invalid choice. Please enter a valid option.\\n");
+                printf("Invalid choice. Please enter a valid option.\n");
         }
 
     } while (choice != 5);
@@ -133,8 +96,3 @@ void postorderTraversal(struct TreeNode* root) {
 }
 
 
-'''
-            fa.write(code)
-        print(f"File '{file_path}' created successfully.")
-    except FileExistsError:
-        print(f"File '{file_path}' already exists.")
